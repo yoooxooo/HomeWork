@@ -16,6 +16,15 @@ public class ArraysUtils {
         }
         return pack;
     }
+
+    public int[] arrayFromConsole(int length){
+        int[] pack = new int[length];
+        for(int i = 1; i <= pack.length; i++){
+            pack[i - 1] = i;
+        }
+        return pack;
+    }
+
     public static int[] arrayRandom(int size, int maxValueExclusion){
         int[] pack = new int[size];
         Random rand = new Random ();

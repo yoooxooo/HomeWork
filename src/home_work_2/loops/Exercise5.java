@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class Exercise5 {
     public static void main(String[] args){
+        Exercise5 ex = new Exercise5();
         Scanner console = new Scanner(System.in);
         int number = 0, fibonachiNumber = 0, min = 0, max = 0, step = 0, numberToTransform = 0;
         boolean lockerA = false, lockerB = false, lockerC = false, lockerD = false, lockerE = false, lockerF = false;
@@ -61,22 +62,25 @@ public class Exercise5 {
             }
         }
 
-        System.out.println("Наибольшая цифра натурального числа " + number + ": " + maxDigitFromNumber(number));
+        System.out.println("Наибольшая цифра натурального числа " + number + ": " + ex.maxDigitFromNumber(number));
 
-        System.out.println("Вероятность четных чисел: " + (chanceOfEven()) + "%");
+        System.out.println("Вероятность четных чисел: " + (ex.chanceOfEven()) + "%");
 
-        evenAndOddNumber(number);
+        System.out.println(ex.evenAndOddNumber(number));
 
-        System.out.println("Последовательность Фибоначи длиной " + fibonachiNumber + ": " + fibonachi(fibonachiNumber));
+        System.out.println("Последовательность Фибоначи длиной " + fibonachiNumber + ": " + ex.fibonachi(fibonachiNumber));
 
-        System.out.println("Ряд чисел имеет вид: " + sequenceOfNumbers(min, max, step));
+        System.out.println("Ряд чисел имеет вид: " + ex.sequenceOfNumbers(min, max, step));
 
-        System.out.println("Число после переворота: " + numberTransormer(numberToTransform));
+        System.out.println("Число после переворота: " + ex.numberTransormer(numberToTransform));
 
     }
-    public static int maxDigitFromNumber(int a){
+    public int maxDigitFromNumber(int a){
         int max = 0;
         int b;
+        if (a < 0) {
+            a = -a;
+        }
         while (a != 0) {
             b = a % 10;
             if (b > max) {
@@ -86,7 +90,7 @@ public class Exercise5 {
         }
         return max;
     }
-    public static double chanceOfEven(){
+    public double chanceOfEven(){
         Random randomNumber = new Random();
         double even = 0;
         for(int i = 0; i < 1000; i++){
@@ -96,8 +100,10 @@ public class Exercise5 {
         }
         return even/10;
     }
-    public static void evenAndOddNumber(int a){
-        int number = a;
+    public String evenAndOddNumber(int a){
+        if (a < 0) {
+            a = -a;
+        }
         int evenNumber = 0;
         int oddNumber = 0;
         while(a != 0){
@@ -108,13 +114,12 @@ public class Exercise5 {
             }
             a = a / 10;
         }
-        System.out.println("В числе " + number + " чётных цифр: " + evenNumber);
-        System.out.println("В числе " + number + " нечётных цифр: " + oddNumber);
+        return evenNumber + " " + oddNumber;
     }
-    public static String fibonachi(int a){
-        StringBuilder result = new StringBuilder("1");
+    public String fibonachi(int a){
+        StringBuilder result = new StringBuilder("0");
         int x = 0;
-        int y = 2;
+        int y = 1;
         int z;
         for (int i = 0; i <= a - 2; i++){
             z = x + y;
@@ -124,15 +129,23 @@ public class Exercise5 {
         }
         return result.toString();
     }
-    public static String sequenceOfNumbers(int min, int max, int step){
+    public String sequenceOfNumbers(int min, int max, int step){
         StringBuilder result = new StringBuilder();
-        for(int i = min; i <= max; i = i + step){
+        result.append(min);
+        for(int i = min + step; i <= max; i = i + step){
             result.append(" ").append(i);
         }
         return result.toString();
     }
-    public static String numberTransormer(int a){
+    public String numberTransormer(int a){
         StringBuilder result = new StringBuilder();
+        if (a == 0) {
+            return "0";
+        }
+        if (a < 0) {
+            a = -a;
+            result.append("-");
+        }
         int b;
         while(a != 0){
             b = a % 10;

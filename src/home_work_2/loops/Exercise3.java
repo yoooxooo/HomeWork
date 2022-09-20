@@ -5,43 +5,45 @@ import java.util.Scanner;
 
 public class Exercise3 {
     public static void main(String[] args) {
+        Exercise3 ex3 = new Exercise3();
+        Exercise2 ex = new Exercise2();
         Scanner console = new Scanner(System.in);
         String number = "";
         String degree = "";
         while (true) {
-            if (Exercise2.notNumberOrNumber(number)) {
+            if (ex.notNumberOrNumber(number)) {
                 System.out.println("Введите число, которое будем возводить в степнь");
                 number = console.nextLine().trim().replaceAll(",", ".");
             }
-            if (Exercise2.notNumberOrNumber(number)) {
+            if (ex.notNumberOrNumber(number)) {
                 System.out.println("Вы ввели не число");
                 continue;
             }
-            if (notIntOrInt(degree) || negativeOrNot(degree)) {
+            if (ex3.notIntOrInt(degree) || ex3.negativeOrNot(degree)) {
                 System.out.println("Введите степень, в которую будем возводить число");
                 degree = console.nextLine().trim().replaceAll(",", ".");
             }
-            if (Exercise2.notNumberOrNumber(degree)) {
+            if (ex.notNumberOrNumber(degree)) {
                 System.out.println("Вы ввели не число");
-            } else if (notIntOrInt(degree)) {
+            } else if (ex3.notIntOrInt(degree)) {
                 System.out.println("Степень должна быть целой");
-            } else if (negativeOrNot(degree)) {
+            } else if (ex3.negativeOrNot(degree)) {
                 System.out.println("В нашем случае степень должна быть положительной");
             } else {
                 break;
             }
         }
-        System.out.println(number + " ^ " + degree + " = " + degreeMaker(number,degree));
+        System.out.println(number + " ^ " + degree + " = " + ex3.degreeMaker(number,degree));
     }
-    public static boolean negativeOrNot(String a) {
+    public boolean negativeOrNot(String a) {
         try {
             double ansver = Double.parseDouble(a);
             return !(ansver >= 0);
         } catch (Exception e) {
-            return true;
+            return false;
         }
     }
-    public static boolean notIntOrInt(String a) {
+    public boolean notIntOrInt(String a) {
         try {
             Integer.parseInt(a);
             return false;
@@ -49,15 +51,19 @@ public class Exercise3 {
             return true;
         }
     }
-    public static double degreeMaker(String a, String b) {
+    public double degreeMaker(String a, String b) {
         double ansver = 1;
-        for (int i = 0; i < Integer.parseInt(b); i++) {
-            ansver = Double.parseDouble(a) * ansver;
-        }
-        if (Objects.equals(Integer.parseInt(b),0)) {
-            return 1;
-        } else {
-            return ansver;
+        try {
+            for (int i = 0; i < Integer.parseInt(b); i++) {
+                ansver = Double.parseDouble(a) * ansver;
+            }
+            if (Objects.equals(Integer.parseInt(b), 0)) {
+                return 1;
+            } else {
+                return ansver;
+            }
+        } catch (Exception e) {
+            return 0;
         }
     }
 }

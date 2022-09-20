@@ -4,7 +4,7 @@ public class Exercise300 {
     public static void main(String[] args) {
         int a = (int)(Math.random()*100)  , b = (int)(Math.random()*100), c = (int)(Math.random()*100);
         double d = 6.99;
-        System.out.println("Радиус закрывающий прямоугольник размерами " + a + "*" + b +" = " + Math.hypot(a,b));
+        System.out.println("Радиус закрывающий прямоугольник размерами " + a + "*" + b +" = " + Math.hypot(a,b)/2);
 
         System.out.println("Десятичный логарифм перемноженных сторон прямоугольника " + c + "*" + b +" = " + Math.log(a*b));
 

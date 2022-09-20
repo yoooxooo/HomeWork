@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class Exercise452 {
     public static void main(String[] args) {
+        Components ex = new Components();
         Scanner console = new Scanner(System.in);
         System.out.println("Введи одну букву или символ (пока мы поддерживаем только английский)");
         String inputLine;
@@ -26,7 +27,7 @@ public class Exercise452 {
             }
         }
         firstSymbol = inputLine.charAt(0);
-        if (firstSymbol < 65 || firstSymbol > 90 && firstSymbol < 97 || firstSymbol > 122 && firstSymbol < 128) {
+        if (ex.symbolOrNot(firstSymbol)) {
             System.out.println("Ты написал символ и его номер \"" + firstSymbol + "\"");
         } else {
             System.out.println("Ты написал букву и ее номер \"" + firstSymbol + "\"");

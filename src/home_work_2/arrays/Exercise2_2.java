@@ -1,109 +1,157 @@
 package home_work_2.arrays;
 
-import static home_work_2.utils.ArraysUtils.arrayFromConsole;
-
 public class Exercise2_2 {
-    public static void main(String[] args) {
-        allArray();
-        secondElements();
-        reverseArray();
-    }
-    public static void allArray() {
-        int[] pack = arrayFromConsole();
+
+    public String allArrayDoWhile(int[] pack) {
         int i = 0;
-        System.out.print("Перебор массива\n");
-        System.out.print("С помощью do  while: ");
+        StringBuilder str = new StringBuilder();
         do {
-            System.out.print(pack[i] + " ");
+            str.append(pack[i]).append(" ");
             i++;
         }
         while (i < pack.length);
-        System.out.print("\n");
-
-        System.out.print("С помощью while: ");
-        i = 0;
-        while (i < pack.length) {
-            System.out.print(pack[i] + " ");
-            i++;
-        }
-        System.out.print("\n");
-
-        System.out.print("С помощью for: ");
-        for (i = 0; i < pack.length; i++) {
-            System.out.print(pack[i] + " ");
-        }
-        System.out.print("\n");
-
-        System.out.print("С помощью foreach: ");
-        for (int element : pack) {
-            System.out.print(element + " ");
-        }
-        System.out.print("\n");
+        return str.toString();
     }
 
-    public static void secondElements() {
-        int[] pack = arrayFromConsole();
+    public String allArrayWhile(int[] pack) {
+        int i = 0;
+        StringBuilder str = new StringBuilder();
+        while (i < pack.length) {
+            str.append(pack[i]).append(" ");
+            i++;
+        }
+        return str.toString();
+    }
+
+    public String allArrayFor(int[] pack) {
+        StringBuilder str = new StringBuilder();
+        for (int j : pack) {
+            str.append(j).append(" ");
+        }
+        return str.toString();
+    }
+
+    public String allArrayForeach(int[] pack) {
+        StringBuilder str = new StringBuilder();
+        for (int j : pack) {
+            str.append(j).append(" ");
+        }
+        return str.toString();
+    }
+
+    public String secondElementsDoWhile(int[] pack) {
         int i = 1;
-        System.out.print("Каждый второй элемент массива\n");
-        System.out.print("С помощью do  while: ");
+        StringBuilder str = new StringBuilder();
         do {
-            System.out.print(pack[i] + " ");
+            str.append(pack[i]).append(" ");
             i += 2;
         }
         while (i < pack.length);
-        System.out.print("\n");
-
-        System.out.print("С помощью while: ");
-        i = 1;
-        while (i < pack.length) {
-            System.out.print(pack[i] + " ");
-            i += 2;
-        }
-        System.out.print("\n");
-
-        System.out.print("С помощью for: ");
-        for (i = 1; i < pack.length; i += 2) {
-            System.out.print(pack[i] + " ");
-        }
-        System.out.print("\n");
-
-        System.out.print("С помощью foreach: ");
-        for (int element : pack) {
-                System.out.print(element + " ");
-            }
-        System.out.print("\n");
+        return str.toString();
     }
 
-    public static void reverseArray() {
-        int[] arr = arrayFromConsole();
-        int i = arr.length - 1;
-        System.out.print("Массив в обратном порядке\n");
-        System.out.print("С помощью do...while: ");
+    public String secondElementsWhile(int[] pack) {
+        int i = 1;
+        StringBuilder str = new StringBuilder();
+        while (i < pack.length) {
+            str.append(pack[i]).append(" ");
+            i += 2;
+        }
+        return str.toString();
+    }
+
+    public String secondElementsFor(int[] pack) {
+        StringBuilder str = new StringBuilder();
+        for (int i = 1; i < pack.length; i += 2) {
+            str.append(pack[i]).append(" ");
+        }
+        return str.toString();
+    }
+
+    public String secondElementsForeach(int[] pack) {
+        StringBuilder str = new StringBuilder();
+        int i = 0;
+        for (int j : pack) {
+            i++;
+            if (i % 2 == 0) {
+                str.append(j).append(" ");
+            }
+        }
+        return str.toString();
+    }
+
+    public String reverseArrayDoWhile(int[] pack) {
+        int i = pack.length - 1;
+        StringBuilder str = new StringBuilder();
         do {
-            System.out.print(arr[i] + " ");
+            str.append(pack[i]).append(" ");
             i--;
         }
         while (i >= 0);
-        System.out.print("\n");
+        return str.toString();
+    }
 
-        System.out.print("С помощью while: ");
-        i = arr.length - 1;
+    public String reverseArrayWhile(int[] pack) {
+        int i = pack.length - 1;
+        StringBuilder str = new StringBuilder();
         while (i >= 0) {
-            System.out.print(arr[i] + " ");
+            str.append(pack[i]).append(" ");
             i--;
         }
-        System.out.print("\n");
+        return str.toString();
+    }
 
+    public String reverseArrayFor(int[] pack) {
+        StringBuilder str = new StringBuilder();
+        for (int i = pack.length - 1; i >= 0; i--) {
+            str.append(pack[i]).append(" ");
+        }
+        return str.toString();
+    }
+
+    public String reverseArrayForeach(int[] pack) {
+        StringBuilder str = new StringBuilder();
+        int i = 0;
+        for (int j : pack) {
+            i++;
+                str.append(pack[pack.length - i]).append(" ");
+        }
+        return str.toString();
+    }
+
+    public void allArray(int[] pack) {
+        System.out.print("Перебор массива\n");
+        System.out.print("С помощью do  while: ");
+        System.out.print(allArrayDoWhile(pack) + "\n");
+        System.out.print("С помощью while: ");
+        System.out.print(allArrayWhile(pack) + "\n");
         System.out.print("С помощью for: ");
-        for (i = arr.length - 1; i >= 0; i--) {
-            System.out.print(arr[i] + " ");
-        }
-        System.out.print("\n");
-
+        System.out.print(allArrayFor(pack) + "\n");
         System.out.print("С помощью foreach: ");
-        for (int element : arr) {
-            System.out.print(element + " ");
-        }
-        System.out.print("\n");
+        System.out.print(allArrayForeach(pack) + "\n");
+    }
+
+    public void secondElements(int[] pack) {
+        System.out.print("Каждый второй элемент массива\n");
+        System.out.print("С помощью do  while: ");
+        System.out.print(secondElementsDoWhile(pack) + "\n");
+        System.out.print("С помощью while: ");
+        System.out.print(secondElementsWhile(pack) + "\n");
+        System.out.print("С помощью for: ");
+        System.out.print(secondElementsFor(pack) + "\n");
+        System.out.print("С помощью foreach: ");
+        System.out.print(secondElementsForeach(pack) + "\n");
+    }
+
+    public void reverseArray(int[] pack) {
+        System.out.print("Массив в обратном порядке\n");
+        System.out.print("С помощью do...while: ");
+        System.out.print(reverseArrayDoWhile(pack) + "\n");
+        System.out.print("С помощью while: ");
+        System.out.print(reverseArrayWhile(pack) + "\n");
+        System.out.print("С помощью for: ");
+        System.out.print(reverseArrayFor(pack) + "\n");
+        System.out.print("С помощью foreach: ");
+        System.out.print(reverseArrayForeach(pack) + "\n");
     }
 }

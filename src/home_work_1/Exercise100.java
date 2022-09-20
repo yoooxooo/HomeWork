@@ -4,8 +4,8 @@ import java.util.Scanner;
 
 public class Exercise100 {
     public static void main(String[] args) {
+        Components ex = new Components();
         Scanner console = new Scanner(System.in);
-        int answer;
         int firstNumber = 0;
         int secondNumber = 0;
         boolean firstLocker = false;
@@ -43,24 +43,6 @@ public class Exercise100 {
             Double.doubleToRawLongBits(переменная) или Float.floatToRawIntBits(переменная), после чего переводить обратно при надобности с помощью Double.longBitsToDouble(переменная) и Float.intBitsToFloat(переменная)
              */
         }
-        if (manipulation.equals("и")) {
-            answer = firstNumber & secondNumber;
-            String answerInBit = Integer.toBinaryString(answer);
-            String firstNumberInBit = Integer.toBinaryString(firstNumber);
-            String secondNumberInBit = Integer.toBinaryString(secondNumber);
-            System.out.println("Побитовое И для чисел " + firstNumber + " и " + secondNumber + ": " + answer);
-            System.out.println("  " + String.format("%32s" , firstNumberInBit).replaceAll(" ", "0")+ "| " + firstNumber);
-            System.out.println("& " + String.format("%32s" , secondNumberInBit).replaceAll(" ", "0") + "| " + secondNumber);
-            System.out.println("  " + String.format("%32s" , answerInBit).replaceAll(" ", "0") + "| " + answer);
-        } else {
-            answer = firstNumber | secondNumber;
-            String answerInBit = Integer.toBinaryString(answer);
-            String firstNumberInBit = Integer.toBinaryString(firstNumber);
-            String secondNumberInBit = Integer.toBinaryString(secondNumber);
-            System.out.println("Побитовое ИЛИ для чисел " + firstNumber + " и " + secondNumber + ": " + answer);
-            System.out.println("  " + String.format("%32s" , firstNumberInBit).replaceAll(" ", "0")+ "| " + firstNumber);
-            System.out.println("| " + String.format("%32s" , secondNumberInBit).replaceAll(" ", "0") + "| " + secondNumber);
-            System.out.println("  " + String.format("%32s" , answerInBit).replaceAll(" ", "0") + "| " + answer);
-        }
+        System.out.println(ex.pobit(firstNumber, secondNumber, manipulation));
     }
 }

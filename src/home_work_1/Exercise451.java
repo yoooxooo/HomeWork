@@ -4,14 +4,14 @@ import java.util.Scanner;
 
 public class Exercise451 {
     public static void main(String[] args) {
+        Components ex = new Components();
         Scanner console = new Scanner(System.in);
         System.out.println("Введи номер знака, который ты хочешь узнать (пока мы поддерживаем только русский и английский)");
         int symbolNumber;
-        char symbol;
         while (true) {
             try {
                 symbolNumber = Integer.parseInt(console.nextLine().trim());
-                if (symbolNumber > 127) {
+                if (symbolNumber > 127 || symbolNumber < 1) {
                     throw new RuntimeException();
                 }
                 break;
@@ -20,11 +20,10 @@ public class Exercise451 {
                 System.out.println("Попробуй еще раз");
             }
         }
-        symbol = (char)symbolNumber;
-        if (symbol < 65 || symbol > 90 && symbol < 97 || symbol > 122 && symbol < 128) {
-            System.out.println("Ты написал \"" + symbol + "\" и это символ");
+        if (ex.symbolOrNot(symbolNumber)) {
+            System.out.println("Ты написал \"" + (char)symbolNumber + "\" и это символ");
         } else {
-            System.out.println("Ты написал \"" + symbol + "\" и это буква");
+            System.out.println("Ты написал \"" + (char)symbolNumber + "\" и это буква");
         }
     }
 }

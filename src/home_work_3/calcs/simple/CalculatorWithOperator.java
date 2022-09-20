@@ -17,11 +17,18 @@ public class CalculatorWithOperator implements ICalculator {
     }
 
     public double division(double firstNumber, double secondNumber) {
+        if (secondNumber == 0 || firstNumber == 0) {
+            return 0;
+        }
         return firstNumber / secondNumber;
     }
 
     public double degree(double firstNumber, int degree) {
         double result = 1;
+        if (degree < 0) {
+            degree = -degree;
+            firstNumber = 1/firstNumber;
+        }
         for (int i = 0; i < degree; i++) {
             result = firstNumber * result;
         }
@@ -36,6 +43,9 @@ public class CalculatorWithOperator implements ICalculator {
     }
 
     public double squareRoot(double number) {
+        if (number < 0) {
+            return 0;
+        }
         return Math.sqrt(number);
     }
 }

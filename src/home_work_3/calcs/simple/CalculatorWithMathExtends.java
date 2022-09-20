@@ -5,6 +5,9 @@ import home_work_3.calcs.api.ICalculator;
 public class CalculatorWithMathExtends extends CalculatorWithOperator implements ICalculator {
 
     public double squareRoot(double number) {
+        if (number < 0) {
+            return 0;
+        }
         return Math.sqrt(number);
     }
 

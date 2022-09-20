@@ -3,24 +3,24 @@ package home_work_3.calcs.additional;
 import home_work_3.calcs.api.ICalculator;
 
 public class CalculatorWithCounterAutoDecorator implements ICalculator {
-    private static ICalculator variant;
+    private ICalculator variant;
 
-    private static long countOperation;
+    private long countOperation;
 
-    private static long memorySocket;
+    private long memorySocket;
 
-    public static ICalculator getCalculator(){
+    public ICalculator getCalculator(){
         return variant;
     }
 
-    public static long getMemorySocket() {
+    public long getMemorySocket() {
         long out;
         out = memorySocket;
         memorySocket = 0;
         return out;
     }
 
-    public static void setMemoryCountOperationSocket() {
+    public void setMemoryCountOperationSocket() {
         memorySocket = countOperation;
     }
 
@@ -28,7 +28,7 @@ public class CalculatorWithCounterAutoDecorator implements ICalculator {
         variant = a;
     }
 
-    public static long getCountOperation() {
+    public long getCountOperation() {
         return countOperation;
     }
 

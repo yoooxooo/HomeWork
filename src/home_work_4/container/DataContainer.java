@@ -26,7 +26,7 @@ public class DataContainer<T> {
     }
 
     public T get(int index) {
-        if (index < data.length) {
+        if (0 <= index && index < data.length) {
             return data[index];
         }
         return null;
@@ -37,7 +37,7 @@ public class DataContainer<T> {
     }
 
     public boolean delete(int index) {
-        if (index + 1 < data.length) {
+        if (1 <= index + 1 && index + 1 < data.length) {
             for (int i = index; i + 1 < data.length; i++) {
                 T buffer = data[i + 1];
                 data[i + 1] = data[i];
@@ -45,7 +45,7 @@ public class DataContainer<T> {
             }
             data = Arrays.copyOf(data, data.length - 1);
             return true;
-        } else if (index < data.length) {
+        } else if (0 <= index && index < data.length) {
             data = Arrays.copyOf(data, data.length - 1);
             return true;
         }
@@ -53,6 +53,9 @@ public class DataContainer<T> {
     }
 
     public boolean delete(T item) {
+        if (item == null) {
+            return false;
+        }
         for (int i = 0; i < data.length; i++) {
             if (item == data[i]) {
                 for (int j = i; j + 1 < data.length; j++) {
@@ -79,30 +82,23 @@ public class DataContainer<T> {
         }
     }
 
-    public static void sort(DataContainer<? extends Comparable> container) {
-        Comparable[] array = container.getItems();
-        for (int i = 0; i < array.length - 1; i++) {
-            for (int j = 0; j + 1 < array.length; j++) {
-                if (array[j].compareTo(array[j+1]) > 0) {
-                    Comparable buffer = array[j + 1];
-                    array[j + 1] = array[j];
-                    array[j] = buffer;
-                }
-            }
-        }
+    public static void sort(DataContainer<? extends Comparable> container){
+        DataContainer.sort(container, new ComparatorComparable());
     }
 
-    public static void sort(DataContainer<? extends Comparable> container, Comparator<Comparable> comparator) {
-        Comparable[] array = container.getItems();
-        for (int i = 0; i < array.length - 1; i++) {
-            for (int j = 0; j + 1 < array.length; j++) {
-                if (comparator.compare(array[j], array[j + 1]) > 0) {
-                    Comparable buffer = array[j + 1];
-                    array[j + 1] = array[j];
-                    array[j] = buffer;
+    public static <T> void sort(DataContainer<T> container, Comparator<? super T> cmp){
+        boolean sorted;
+        do {
+            sorted = true;
+            for (int j = 0; j < container.data.length-1; j++){
+                if(cmp.compare(container.data[j], container.data[j + 1]) > 0){
+                    sorted = false;
+                    T tmp = container.data[j + 1];
+                    container.data[j + 1] = container.data[j];
+                    container.data[j] = tmp;
                 }
             }
-        }
+        } while (!sorted);
     }
 
     public String toString () {

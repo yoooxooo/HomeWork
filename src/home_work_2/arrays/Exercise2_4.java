@@ -1,59 +1,44 @@
 package home_work_2.arrays;
 
-import static home_work_2.utils.ArraysUtils.arrayRandom;
-
 public class Exercise2_4 {
-    public static void main(String[] args){
-        evenSumm();
-        maximalEvenIndex();
-        lessThanAverage();
-        twoSmallestArrayElements();
-        compressArray(5, 10);
-        sumOfArrayDigits();
 
-    }
-    public static void evenSumm() {
-        int[] arrRand = arrayRandom(50, 100);
+    public int evenSumm(int [] arrRand) {
         int sum = 0;
-        for (int i = 0; i < arrRand.length; i++) {
-            if (arrRand[i] >= 0 && arrRand[i] % 2 == 0) {
-                sum = sum + arrRand[i];
+        for (int j : arrRand) {
+            if (j >= 0 && j % 2 == 0) {
+                sum = sum + j;
             }
         }
-        System.out.println("Сумма чётных положительных элементов массива: " + sum);
+        return sum;
     }
-    public static void maximalEvenIndex() {
-        int[] arrRand = arrayRandom(50, 100);
+    public int maximalEvenIndex(int [] arrRand) {
         int maxNumber = 0;
-        for (int i = 0; i < arrRand.length; i++){
-            if(i % 2 == 0 && maxNumber < arrRand[i]){
-                maxNumber = arrRand[i];
+        for (int j : arrRand) {
+            if (j % 2 == 0 && maxNumber < j) {
+                maxNumber = j;
             }
         }
-        System.out.println("Максимальный элемент массива с чётным индексом равен: " + maxNumber);
+        return maxNumber;
     }
-    public static void lessThanAverage(){
-        int[] arrRand = arrayRandom(50, 100);
-        int sum = 0;
+    public String lessThanAverage(int [] arrRand){
+        double sum = 0;
         for(int element : arrRand){
             sum += element;
         }
         double average = sum / arrRand.length;
-        System.out.print("Элементы массива, меньше среднеего " + average + ": ");
-        for(int i = 0; i < arrRand.length; i++){
-            if(arrRand[i] < average){
-                System.out.print(arrRand[i] + " ");
+        StringBuilder str = new StringBuilder();
+        for (int j : arrRand) {
+            if (j < average) {
+                str.append(j).append(" ");
             }
         }
-        System.out.print("\n");
+        return str.toString();
     }
-    public static void twoSmallestArrayElements(){
-        int[] arrRand = arrayRandom(50, 100);
+    public String twoSmallestArrayElements(int [] arrRand){
         int min1 = 100;
         int min2 = 100;
         int indexMin1 = 0;
         for(int i = 0; i < arrRand.length; i++) {
-            System.out.print(arrRand[i] + " ");
             if (arrRand[i] < min1) {
                 min1 = arrRand[i];
                 indexMin1 = i;
@@ -64,15 +49,9 @@ public class Exercise2_4 {
                 min2 = arrRand[j];
             }
         }
-        System.out.print("\n");
-        System.out.println("Двумя наименьшими элементами массива являются: " + min1 + " и " + min2);
+        return min1 + " " + min2;
     }
-    public static void compressArray(int minDel, int maxDel){
-        int[] arrRand = arrayRandom(50, 100);
-        for(int element : arrRand){
-            System.out.print(element + " ");
-        }
-        System.out.print("\n");
+    public String compressArray(int[] arrRand, int minDel, int maxDel){
         int i = 0;
         while( i < arrRand.length){
             if(minDel <= arrRand[i] && arrRand[i] <= maxDel){
@@ -86,27 +65,22 @@ public class Exercise2_4 {
                 i++;
             }
         }
-        System.out.println("После удаления элементов, принадлежащих интервалу: [" + minDel + "; " + maxDel + "]");
+        StringBuilder str = new StringBuilder();
         for(int element : arrRand){
-            System.out.print(element + " ");
+            str.append(element).append(" ");
         }
-        System.out.println();
+        return str.toString();
     }
-    public static void sumOfArrayDigits(){
-        int[] arrRand = arrayRandom(50, 100);
-        for(int element : arrRand){
-            System.out.print(element + " ");
-        }
-        System.out.println();
+    public int sumOfArrayDigits(int[] arrRand){
         int sum = 0;
         int number;
-        for(int i = 0; i < arrRand.length; i++){
-            number = arrRand[i];
-            while(number !=0){
+        for (int j : arrRand) {
+            number = j;
+            while (number != 0) {
                 sum += number % 10;
                 number = number / 10;
             }
         }
-        System.out.println("Сумма всех цифр массива равна: " + sum);
+        return sum;
     }
 }

@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class Exercise460 {
     public static void main(String[] args) {
+        Components ex = new Components();
         Scanner console = new Scanner(System.in);
         System.out.println("Введи год, который тебе интересен");
         int year;
@@ -16,7 +17,7 @@ public class Exercise460 {
                 System.out.println("Попробуй еще раз");
             }
         }
-        if (year % 400 == 0 || year % 100 != 0 && year % 4 == 0) {
+        if (ex.year365(year)) {
             System.out.println("Этот год високосный");
         } else {
             System.out.println("Этот год не високосный");

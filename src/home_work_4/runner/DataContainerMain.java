@@ -34,13 +34,13 @@ public class DataContainerMain {
         pack.add(200);
         pack.add(241);
 
-        System.out.println(pack.toString());
+        System.out.println(pack);
 
         System.out.println(pack.add(212));
         System.out.println(pack.get(11));
         System.out.println(pack.add(null));
 
-        System.out.println(pack.toString());
+        System.out.println(pack);
 
         System.out.println(pack.delete(11));
         System.out.println(pack.delete(8));
@@ -51,16 +51,16 @@ public class DataContainerMain {
         pack.add(null);
         pack.add(362);
 
-        System.out.println(pack.toString());
+        System.out.println(pack);
 
         System.out.println(pack.delete(numberOne));
         System.out.println(pack.delete(numberTwo));
 
-        System.out.println(pack.toString());
+        System.out.println(pack);
 
         pack.sort(comparingInt);
 
-        System.out.println(pack.toString());
+        System.out.println(pack);
 
         words.add("А у меня все прекрасней не бывает");
         words.add("Привет");
@@ -69,15 +69,15 @@ public class DataContainerMain {
         words.add("Долго меня ждал?");
         words.add("Хорошо что не долго");
 
-        System.out.println(words.toString());
+        System.out.println(words);
 
         words.sort(comparingStr);
 
-        System.out.println(words.toString());
+        System.out.println(words);
 
         words.delete("Дуралей");
 
-        System.out.println(words.toString());
+        System.out.println(words);
 
     }
 }

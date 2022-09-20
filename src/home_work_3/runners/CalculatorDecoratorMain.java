@@ -38,16 +38,9 @@ public class CalculatorDecoratorMain {
         ICalculator method = new CalculatorWithCounterAutoDecorator(new CalculatorWithMemoryDecorator(variant));
 
         double result = method.degree(method.division(28, 5), 2);
-        CalculatorWithMemoryDecorator.setMemorySocket();
-        CalculatorWithCounterAutoDecorator.setMemoryCountOperationSocket();
         result = method.adding(method.adding(4.1, method.multiplication(15, 7)), result);
         System.out.println("Результат, полученный методом " + number + " = " + result);
-        System.out.println("Значение в памяти после " + CalculatorWithCounterAutoDecorator.getMemorySocket() + " операции = " + CalculatorWithMemoryDecorator.getMemorySocket());
-        System.out.println("Однако после вызова значений в памяти они стираются, поэтому на теперь можно довольствоваться значениями " + CalculatorWithCounterAutoDecorator.getMemorySocket() + " и " + CalculatorWithMemoryDecorator.getMemorySocket());
-        System.out.println("Количество действий, потраченное на все уравнение равно " + CalculatorWithCounterAutoDecorator.getCountOperation());
         System.out.println("Использовались следующие 'декораторы' и калькулятор:");
         System.out.println(method);
-        System.out.println(CalculatorWithCounterAutoDecorator.getCalculator());
-        System.out.println(CalculatorWithMemoryDecorator.getCalculator());
     }
 }

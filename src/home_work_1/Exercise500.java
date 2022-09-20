@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class Exercise500 {
     public static void main(String[] args) {
+        Components ex = new Components();
         String workingDay = " ";
         String vacation = " ";
         Scanner console = new Scanner(System.in);
@@ -29,10 +30,6 @@ public class Exercise500 {
                 System.out.println("Попробуй еще раз");
             }
         }
-        if (vacation.equals("Да") || workingDay.equals("Нет")) {
-            System.out.println("Можешь спать дальше");
-        } else {
-            System.out.println("Пора идти на работу");
-        }
+        System.out.println(ex.sleepOrNot(workingDay, vacation));
     }
 }

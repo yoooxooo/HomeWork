@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class Exercise1 {
     public static void main(String[] args) {
+        Exercise1 ex = new Exercise1();
         Scanner console = new Scanner(System.in);
         int factorialNumber;
         while (true) {
@@ -16,16 +17,16 @@ public class Exercise1 {
                 System.out.println("Попробуй еще раз");
             }
         }
-        if (factorialPossibilityChecker(factorialNumber)) {
+        if (ex.factorialPossibilityChecker(factorialNumber)) {
             for (int i = 1;i < factorialNumber;i++) {
                 System.out.print(i + " * ");
             }
-            System.out.print(factorialNumber + " = " + factorialMaker(factorialNumber));
+            System.out.print(factorialNumber + " = " + ex.factorialMaker(factorialNumber));
         } else {
             System.out.println("Получаемое число слишком велико для наших текущих возможностей\nВ следующий раз выбирай число поменьше");
         }
     }
-    public static boolean factorialPossibilityChecker(int a) {
+    public boolean factorialPossibilityChecker(int a) {
         long ansver = 1;
         for (int i = 1;i <= a;i++) {
             if (ansver > ansver * i) {
@@ -36,7 +37,7 @@ public class Exercise1 {
         return true;
     }
 
-    public static long factorialMaker(int a) {
+    public long factorialMaker(int a) {
         long ansver = 1;
         for (int i = 1;i <= a;i++) {
             ansver = ansver * i;

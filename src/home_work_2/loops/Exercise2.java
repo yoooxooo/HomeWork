@@ -4,14 +4,15 @@ import java.util.Scanner;
 
 public class Exercise2 {
     public static void main(String[] args) {
+        Exercise2 ex = new Exercise2();
         Scanner console = new Scanner(System.in);
         String number;
         while (true) {
             System.out.println("Введи число, которое ты хочешь разложить и перемножить");
             number = console.nextLine().trim().replaceAll(",", ".");
-                   if (notNumberOrNumber(number)) {
+                   if (ex.notNumberOrNumber(number)) {
                        System.out.println("Это не число");
-                   } else if (doubleOrNot(number)) {
+                   } else if (ex.doubleOrNot(number)) {
                        System.out.println("Число не целое");
                        } else {
                        break;
@@ -20,10 +21,10 @@ public class Exercise2 {
         for (int i = 0; i < number.length() - 1; i++) {
             System.out.print(number.charAt(i) + " * ");
         }
-        System.out.print(number.charAt(number.length() - 1) + " = " + numberLineToMultipliedResult(number));
+        System.out.print(number.charAt(number.length() - 1) + " = " + ex.numberLineToMultipliedResult(number));
     }
 
-    public static long numberLineToMultipliedResult(String a) {
+    public long numberLineToMultipliedResult(String a) {
         long ansver = 1;
         for (int i = 0; i < a.length(); i++) {
             ansver = ansver * Character.digit(a.charAt(i), 10);
@@ -31,7 +32,7 @@ public class Exercise2 {
         return ansver;
     }
 
-    public static boolean notNumberOrNumber(String a) {
+    public boolean notNumberOrNumber(String a) {
         try {
             Double.parseDouble(a);
             return false;
@@ -39,7 +40,11 @@ public class Exercise2 {
             return true;
         }
     }
-    public static boolean doubleOrNot(String a) {
+    public boolean doubleOrNot(String a) {
+        Exercise2 ex = new Exercise2();
+        if (ex.notNumberOrNumber(a)) {
+            return false;
+        }
         for (int i = 0; i < a.length(); i++) {
             char symbol = a.charAt(i);
                 if (symbol == '.') {

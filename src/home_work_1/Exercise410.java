@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class Exercise410 {
     public static void main(String[] args) {
+        Components ex = new Components();
         Scanner console = new Scanner(System.in);
         System.out.println("Введите число");
         int number;
@@ -16,7 +17,7 @@ public class Exercise410 {
                 System.out.println("Попробуй еще раз");
             }
         }
-        if (number % 2 != 0) {
+        if (ex.oddOrNot(number)) {
             System.out.println("Число нечетное");
         } else {
             System.out.println("Число четное");

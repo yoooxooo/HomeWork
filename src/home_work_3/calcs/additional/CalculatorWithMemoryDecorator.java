@@ -4,24 +4,20 @@ import home_work_3.calcs.api.ICalculator;
 
 public class CalculatorWithMemoryDecorator implements ICalculator {
 
-    private static ICalculator variant;
+    private final ICalculator variant;
 
-    private static double memory;
+    private  double memory;
 
-    private static double memorySocket;
-
-    public static ICalculator getCalculator(){
-            return variant;
-    }
+    private  double memorySocket;
 
     public CalculatorWithMemoryDecorator (ICalculator a) {
         variant = a;
     }
 
-    public static void setMemorySocket() {
+    public void setMemorySocket() {
         memorySocket = memory;
     }
-    public static double getMemorySocket() {
+    public double getMemorySocket() {
         double output;
         output = memorySocket;
         memorySocket = 0;
