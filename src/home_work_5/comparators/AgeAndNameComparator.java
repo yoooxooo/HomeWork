@@ -1,6 +1,10 @@
-package home_work_5;
+package home_work_5.comparators;
 
-public class AgeAndNameComparator {
+import home_work_5.Animal;
+
+import java.util.Comparator;
+
+public class AgeAndNameComparator implements Comparator<Animal> {
     private final NameComparator nameComparator = new NameComparator();
 
     private final AgeComparator ageComparator = new AgeComparator();

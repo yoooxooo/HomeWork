@@ -1,4 +1,4 @@
-package home_work_5;
+package home_work_5.comparators;
 
 import java.util.Comparator;
 

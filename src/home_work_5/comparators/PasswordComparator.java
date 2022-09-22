@@ -1,4 +1,4 @@
-package home_work_5;
+package home_work_5.comparators;
 
 import java.util.Comparator;
 
@@ -10,7 +10,7 @@ public class PasswordComparator implements Comparator<String> {
         } else if (name2 == null) {
             return 1;
         }
-        return name1.length() - name2.length();
+        return Integer.compare(name1.length(), name2.length());
 
     }
 }
