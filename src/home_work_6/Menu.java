@@ -17,7 +17,7 @@ public class Menu implements IMenu {
     public Menu() {
         BufferedReader reader = null;
         try {
-            reader = new BufferedReader(new FileReader("HomeWork\\saves\\hw6\\Menu.txt"));
+            reader = new BufferedReader(new FileReader("D:\\IT Courses\\IntelliJ_IDEA_Workspace\\HomeWork\\saves\\hw6\\Menu.txt"));
         } catch (FileNotFoundException e) {
             System.out.println("Файл меню не найден");
             throw new RuntimeException("Поменяйте файл Menu.txt для успешной работы");
