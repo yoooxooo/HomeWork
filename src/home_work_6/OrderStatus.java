@@ -12,8 +12,14 @@ public class OrderStatus implements IOrderStatus {
 
     private final ITicket ticket;
 
+    private boolean done;
+
+
     public OrderStatus(ITicket ticket) {
         this.ticket = ticket;
+        if (LocalTime.now().minusSeconds(20).isAfter(ticket.getCreateAt().toLocalTime())) {
+            done = true;
+        }
     }
 
     public ITicket getTicket() {
@@ -34,11 +40,12 @@ public class OrderStatus implements IOrderStatus {
         }
         if (LocalTime.now().minusSeconds(20).isAfter(ticket.getCreateAt().toLocalTime())) {
             list.add(new Stage("Заказ готов", ticket.getCreateAt().toLocalTime().plusSeconds(20)));
+            done = true;
         }
         return list;
     }
 
     public boolean isDone() {
-        return LocalTime.now().minusSeconds(20).isAfter(ticket.getCreateAt().toLocalTime());
+        return done;
     }
 }
