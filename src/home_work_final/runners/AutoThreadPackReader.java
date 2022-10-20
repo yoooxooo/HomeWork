@@ -1,6 +1,8 @@
 package home_work_final.runners;
 
+import home_work_final.readers.BookReader;
 import home_work_final.readers.PackReader;
+import home_work_final.readers.RowReader;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -11,9 +13,9 @@ public class AutoThreadPackReader {
         PackReader packReader;
         Scanner console = new Scanner(System.in);
         try {
-            packReader = new PackReader(console.nextLine().trim());
+            packReader = new PackReader(console.nextLine().trim(), new BookReader(new RowReader()));
         } catch (IOException e) {
-            System.out.println("Папка с данным адресом не найдена");
+            System.out.println("Папка с данным адресом не найдена, либо в ней нет файлов для обработки");
             throw new  RuntimeException(e);
         }
         String buffer;

@@ -1,6 +1,8 @@
 package home_work_final.runners;
 
+import home_work_final.readers.BookReader;
 import home_work_final.readers.PackReader;
+import home_work_final.readers.RowReader;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -11,7 +13,7 @@ public class ManualPackReader {
         PackReader packReader;
         Scanner console = new Scanner(System.in);
         try {
-            packReader = new PackReader(console.nextLine().trim());
+            packReader = new PackReader(console.nextLine().trim(), new BookReader(new RowReader()));
         } catch (IOException e) {
             System.out.println("Папка с данным адресом не найдена");
             throw new  RuntimeException(e);
@@ -31,7 +33,7 @@ public class ManualPackReader {
                         break;
                     }
                 }
-                if (packReader.getBooksWithNames().containsKey(buffer1)) {
+                if (packReader.getBooksWithNamesForUsers().containsKey(buffer1)) {
                     flagBook = true;
                 } else System.out.println("Такого названия нет в списке");
             }
@@ -52,7 +54,7 @@ public class ManualPackReader {
                         continue;
                     }
                 }
-                packReader.scanBook(buffer1, buffer2);
+                packReader.scanBookAndWriteLog(packReader.getBooksWithNamesForUsers().get(buffer1), buffer2);
             }
         } while (true);
     }

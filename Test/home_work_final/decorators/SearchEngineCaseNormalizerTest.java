@@ -1,7 +1,6 @@
-package home_work_final.searchers;
+package home_work_final.decorators;
 
-import home_work_final.decorators.SearchEngineCaseNormalizer;
-import home_work_final.decorators.SearchEnginePunctuationNormalizer;
+import home_work_final.searchers.EasySearch;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

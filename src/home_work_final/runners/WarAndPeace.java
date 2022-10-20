@@ -1,68 +1,28 @@
 package home_work_final.runners;
 
 import home_work_final.api.ISearchEngine;
-import home_work_final.decorators.SearchEngineCaseNormalizer;
 import home_work_final.decorators.SearchEngineRegisterNormalizer;
+import home_work_final.dto.Book;
 import home_work_final.readers.BookReader;
+import home_work_final.readers.RowReader;
 import home_work_final.searchers.RegExSearch;
 
-import java.io.IOException;
+import java.io.File;
 import java.util.Scanner;
 
 public class WarAndPeace {
     public static void main(String[] args) {
         System.out.println("Введите '1', если хотите искать без учета регистра");
         Scanner console = new Scanner(System.in);
+        ISearchEngine searchEngine;
         if("1".equals(console.nextLine())) {
-            BookReader bookReader = new BookReader();
-            ISearchEngine registerNormalizer = new SearchEngineRegisterNormalizer(new RegExSearch());
-            try{
-            System.out.println("Слово война - "
-                            + bookReader
-                            .scanWithISearchEngine(
-                                    registerNormalizer
-                                    , "D:\\Тест\\Война и мир_книга.txt"
-                                    , "война") + " раз");
-            System.out.println("Слово мир - "
-                    + bookReader
-                    .scanWithISearchEngine(
-                            registerNormalizer
-                            , "D:\\Тест\\Война и мир_книга.txt"
-                            , "мир") + " раз");
-            System.out.println("Союз и - "
-                    + bookReader
-                    .scanWithISearchEngine(
-                            registerNormalizer
-                            , "D:\\Тест\\Война и мир_книга.txt"
-                            , "и") + " раз\n");
-            } catch (IOException e) {
-                throw new RuntimeException();
-            }
+            searchEngine = new SearchEngineRegisterNormalizer(new RegExSearch());
         } else {
-            BookReader bookReader = new BookReader();
-            ISearchEngine regExSearch = new RegExSearch();
-            try{
-                System.out.println("Слово война - "
-                        + bookReader
-                        .scanWithISearchEngine(
-                                regExSearch
-                                , "D:\\Тест\\Война и мир_книга.txt"
-                                , "война") + " раз");
-                System.out.println("Слово мир - "
-                        + bookReader
-                        .scanWithISearchEngine(
-                                regExSearch
-                                , "D:\\Тест\\Война и мир_книга.txt"
-                                , "мир") + " раз");
-                System.out.println("Союз и - "
-                        + bookReader
-                        .scanWithISearchEngine(
-                                regExSearch
-                                , "D:\\Тест\\Война и мир_книга.txt"
-                                , "и") + " раз\n");
-            } catch (IOException e) {
-                throw new RuntimeException();
-            }
+            searchEngine = new RegExSearch();
         }
-    }
+        BookReader bookReader = new BookReader(new RowReader(), searchEngine, new Book(new File("D:\\Тест\\Война и мир_книга.txt")));
+        System.out.println("Слово война - " + bookReader.scan("война") + " раз");
+        System.out.println("Слово мир - " + bookReader.scan("мир") + " раз");
+        System.out.println("Союз и - " + bookReader.scan( "и") + " раз\n");
+        }
 }
